@@ -1,0 +1,6 @@
+<form #login="ngForm" (ngSubmit)="onClickSubmit(login.value)" >
+  <input type = "text" name = "email" placeholder = "email" ngModel>
+  <input type = "password" name = "password" placeholder = "password" ngModel>
+  <input type = "submit" value = "submit">
+</form>
+<a routerLink="/register">Register</a>
