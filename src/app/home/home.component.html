@@ -1,2 +1,6 @@
-<button (click) = toggleDisplay()>Toggle</button>
-<div *ngIf = "isShow" class="answers-wrapper">Click me</div>
+<div class="row">
+  <div class="col-4 offset-4">
+    <button (click) = toggleDisplay()>Toggle</button>
+  </div>
+  <div *ngIf = "isShow" class="answers-wrapper">Click me</div>
+</div>

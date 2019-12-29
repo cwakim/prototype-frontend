@@ -4,7 +4,7 @@ import { ApiService } from '../api.service';
 @Component({
   selector: 'home',
   templateUrl: './home.component.html',
-  styles: []
+  styleUrls: ['../app.component.css']
 })
 export class HomeComponent implements OnInit {
 
