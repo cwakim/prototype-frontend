@@ -1,12 +1,2 @@
-<table>
-<tr>
-<th>id</th>
-<th>name</th>
-<th>email</th>
-</tr>
-<tr *ngFor="let item of data;">
-<td>{{item.director}}</td>
-<td>{{item.name}}</td>
-<td>{{item.email}}</td>
-</tr>
-</table>
+<button (click) = toggleDisplay()>Toggle</button>
+<div *ngIf = "isShow" class="answers-wrapper">Click me</div>

@@ -9,6 +9,7 @@ import { ApiService } from '../api.service';
 export class HomeComponent implements OnInit {
 
   data: Object = [];
+  isShow = false;
 
   constructor(private apiService: ApiService) { }
 
@@ -20,6 +21,10 @@ export class HomeComponent implements OnInit {
     this.apiService.getInfo(localStorage.getItem('token')).subscribe((res: any)=>{
         this.data = res.data;
     });
+  }
+
+  toggleDisplay() {
+    this.isShow = !this.isShow;
   }
 
   ngOnInit() {
