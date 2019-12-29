@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../users.service';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'home',
@@ -10,20 +10,20 @@ export class HomeComponent implements OnInit {
 
   data: Object = [];
 
-  constructor(private usersService: UsersService) { }
+  constructor(private apiService: ApiService) { }
 
   /**
   * Returns the users
   * @param formData
   */
-  getFilms(): void{
-    this.usersService.getFilms(localStorage.getItem('token')).subscribe((res: any)=>{
+  getInfo(): void{
+    this.apiService.getInfo(localStorage.getItem('token')).subscribe((res: any)=>{
         this.data = res.data;
     });
   }
 
   ngOnInit() {
-    this.getFilms();
+    this.getInfo();
   }
 
 }
