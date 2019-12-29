@@ -34,11 +34,4 @@ export class UsersService {
     return this.http.post(`${this.apiURL}/api/register`, params);
   }
 
-  public getFilms(access_token){
-    let myheader = new HttpHeaders({
-      Authorization: 'Bearer ' + access_token
-    });
-
-    return this.http.get<User[]>(`${this.apiURL}/api/films`, {headers: myheader});
-  }
 }
