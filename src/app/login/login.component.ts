@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
    onClickSubmit(formData) {
      this.usersService.getAccess(formData.email, formData.password).subscribe((res: any)=>{
        localStorage.setItem('token', res['access_token']);
-       this._router.navigate(['/home']);
+       this._router.navigate(['']);
      });
    }
 }

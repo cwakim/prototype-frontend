@@ -11,6 +11,5 @@ export class AppComponent {
   constructor(private _router: Router) { }
 
   ngOnInit() {
-    this._router.navigate(['/home']);
   }
 }

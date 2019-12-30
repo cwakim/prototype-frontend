@@ -1,12 +1,30 @@
-<table>
-<tr>
-<th>id</th>
-<th>name</th>
-<th>email</th>
-</tr>
-<tr *ngFor="let item of data;">
-<td>{{item.director}}</td>
-<td>{{item.name}}</td>
-<td>{{item.email}}</td>
-</tr>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-3 home-logo">
+      <h1>
+        <img src="assets/img/logo.svg" />
+      </h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-12 offset-lg-3">
+      <div (click) = toggleDisplay() class="home-button">
+        <i class="fa fa-star"></i>
+        <span class="home-button-text">Do. Or do not. There is no Try</span>
+        <i class="fa fa-star"></i>
+      </div>
+    </div>
+  </div>
+  <div *ngIf = "isShow" class="row">
+    <div class="col-12">
+      <p class="home-question">Which of all StarWars movies has longest crawl?</p>
+      <p class="home-answer">{{data.crawl.title}} ({{data.crawl.length}} characters)</p>
+      <p class="home-question">What character (person) appeared in the most StarWars films?</p>
+      <p class="home-answer">{{data.characters.name}} ({{data.characters.count}} films)</p>
+      <p class="home-question">What species appeared in the most number of StarWars films?</p>
+      <p class="home-answer">{{data.species.name}} ({{data.species.count}} films)</p>
+      <p class="home-question">What planet in StarWars universe provided largest number of vehicle pilots?</p>
+      <p class="home-answer">Planet: {{data.planet.name}} Pilot: {{data.planet.pilot}} Vehicles: {{data.planet.count}}</p>
+    </div>
+  </div>
+</div>
