@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
        formData.c_password
      ).subscribe((res : any)=>{
        localStorage.setItem('token', res.data.token);
-       this._router.navigate(['/home']);
+       this._router.navigate(['']);
      });
    }
 }
