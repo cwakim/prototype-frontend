@@ -7,7 +7,6 @@ import {environment} from '../environments/environment';
 })
 
 export class ApiService {
-  apiURL: string = 'http://localhost:8000';
 
   constructor(private http: HttpClient) { }
 
@@ -22,6 +21,6 @@ export class ApiService {
       Authorization: 'Bearer ' + access_token
     });
 
-    return this.http.get(`${this.apiURL}/api/info`, {headers: myheader});
+    return this.http.get(`${environment.api_url}/api/info`, {headers: myheader});
   }
 }

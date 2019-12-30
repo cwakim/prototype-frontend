@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
    onClickSubmit(formData) {
      this.SpinnerService.show();
      this.usersService.getAccess(formData.email, formData.password).subscribe((res: any)=>{
-       if (!res.success)
+       if (res.error)
        {
          alert(res.message);
        }

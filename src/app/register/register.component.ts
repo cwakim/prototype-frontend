@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
        formData.password,
        formData.c_password
      ).subscribe((res : any)=>{
-       if (!res.success)
+       if (res.error)
        {
          alert(res.message);
        }
