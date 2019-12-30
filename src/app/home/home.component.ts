@@ -13,12 +13,18 @@ export class HomeComponent implements OnInit {
 
   constructor(private apiService: ApiService) { }
 
+  /**
+  * Gets the needed information from the server and sets them in the data variable
+  */
   getInfo(): void{
     this.apiService.getInfo(localStorage.getItem('token')).subscribe((res: any)=>{
         this.data = res.data;
     });
   }
 
+  /**
+  * Toggles the display of the answers container
+  */
   toggleDisplay() {
     this.isShow = !this.isShow;
   }

@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
    }
 
    /**
-   * // TODO: validate the response
    * Logs in the user from the admin and redirects to home
    * @param formData
    */

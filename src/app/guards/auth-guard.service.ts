@@ -8,6 +8,14 @@ export class AuthGuard implements CanActivate {
   constructor(private _router: Router) {
   }
 
+  /**
+  * Checks if the page needs authentication
+  *
+  * @param ActivatedRouteSnapshot
+  * @param RouterStateSnapshot
+  *
+  * @return boolean
+  */
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (localStorage.getItem('token')) {
         return true;

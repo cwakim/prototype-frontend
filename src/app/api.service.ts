@@ -11,6 +11,12 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  /**
+  * Retusns the info from the server
+  *
+  * @param access_token
+  * @return string
+  */
   public getInfo(access_token){
     let myheader = new HttpHeaders({
       Authorization: 'Bearer ' + access_token

@@ -14,6 +14,12 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
+  /**
+  * Calls the login api from the server and returns the response
+  * @param username
+  * @param password
+  * @return HttpClient
+  */
   public getAccess(username, password){
     let params = new HttpParams();
     params = params.set('client_id', environment.client_id);
@@ -31,6 +37,14 @@ export class UsersService {
     );
   }
 
+  /**
+  * Calls the register api from the server and returns the response
+  * @param name
+  * @param email
+  * @param password
+  * @param c_password
+  * @return HttpClient
+  */
   public registerUser(name, email, password, c_password){
     let params = new HttpParams();
     params = params.set('name', name);
