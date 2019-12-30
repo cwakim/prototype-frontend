@@ -10,7 +10,9 @@ import { RouterModule } from '@angular/router';
 import { AuthGuard } from "./guards/auth-guard.service";
 import { HomeComponent } from './home/home.component';
 import { HomeModule } from './home/home.module';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { FormsModule }   from '@angular/forms';
     HttpClientModule,
     RouterModule.forRoot(APP_ROUTES),
     HomeModule,
-    FormsModule
+    FormsModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

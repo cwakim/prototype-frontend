@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { User } from './users';
-import { HttpParams, HttpHeaders, HttpClient } from '@angular/common/http'
-import {environment} from '../environments/environment';
+import { HttpParams, HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http'
+import { environment } from '../environments/environment';
+import { throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +23,12 @@ export class UsersService {
     params = params.set('password', password);
     params = params.set('scope', '*');
 
-    return this.http.post(`${this.apiURL}/oauth/token`, params);
+    return this.http.post(`${this.apiURL}/oauth/token`, params).pipe(
+      retry(1),
+      catchError(error => {
+        return [{success: false, message: error.message}];
+      })
+    );
   }
 
   public registerUser(name, email, password, c_password){
@@ -31,7 +38,13 @@ export class UsersService {
     params = params.set('c_password', c_password);
     params = params.set('email', email);
 
-    return this.http.post(`${this.apiURL}/api/register`, params);
+    return this.http.post(`${this.apiURL}/api/register`, params)
+      .pipe(
+        retry(1),
+        catchError(error => {
+          return [{success: false, message: error.message}];
+        })
+      );
   }
 
 }
