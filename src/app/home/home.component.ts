@@ -4,7 +4,7 @@ import { ApiService } from '../api.service';
 @Component({
   selector: 'home',
   templateUrl: './home.component.html',
-  styleUrls: ['../app.component.css']
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
 
@@ -13,10 +13,6 @@ export class HomeComponent implements OnInit {
 
   constructor(private apiService: ApiService) { }
 
-  /**
-  * Returns the users
-  * @param formData
-  */
   getInfo(): void{
     this.apiService.getInfo(localStorage.getItem('token')).subscribe((res: any)=>{
         this.data = res.data;
