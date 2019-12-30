@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,11 @@ import { Router } from '@angular/router';
   styleUrls: ['../app.component.css']
 })
 export class LoginComponent implements OnInit {
-   constructor(private usersService: UsersService, private _router: Router) { }
+   constructor(
+     private usersService: UsersService,
+     private _router: Router,
+     private SpinnerService: NgxSpinnerService
+   ) { }
 
    ngOnInit() {
    }
@@ -20,9 +25,18 @@ export class LoginComponent implements OnInit {
    * @param formData
    */
    onClickSubmit(formData) {
+     this.SpinnerService.show();
      this.usersService.getAccess(formData.email, formData.password).subscribe((res: any)=>{
-       localStorage.setItem('token', res['access_token']);
-       this._router.navigate(['/home']);
+       if (!res.success)
+       {
+         alert(res.message);
+       }
+       else
+       {
+         localStorage.setItem('token', res['access_token']);
+         this._router.navigate(['']);
+       }
+       this.SpinnerService.hide();
      });
    }
 }

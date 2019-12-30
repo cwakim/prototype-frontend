@@ -1,0 +1,50 @@
+.home-logo {
+  text-align: center;
+}
+.home-logo img {
+  max-width: 100%;
+}
+.home-button {
+  cursor: pointer;
+  height: 70px;
+  position: absolute;
+  color: #000;
+  background-color: #ffe81f;
+  border: 1px solid #ffee57;
+  border-radius: 10px;
+  box-shadow: 0px 10px 0px #969165;
+  position: relative;
+  top: 0px;
+  transition: all ease 0.8s;
+  text-align: center;
+  line-height: 70px;
+  font-size: 30px;
+}
+.home-button:hover {
+  box-shadow: 0 5px 0 #969165;
+  top: 3px;
+}
+.home-button-text {
+  padding: 0px 20px;
+}
+.home-question {
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+  padding-top: 20px;
+}
+.home-answer {
+  color: #ffe81f;
+  text-align: center;
+  font-size: 20px;
+}
+@media (max-width: 767px)
+{
+  .home-button {
+    font-size: 18px;
+  }
+  .home-button-text {
+    padding: 0px 10px;
+  }
+}
