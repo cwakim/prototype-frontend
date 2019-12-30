@@ -10,10 +10,15 @@ import { catchError, retry } from 'rxjs/operators';
 })
 
 export class UsersService {
-  apiURL: string = 'http://localhost:8000';
 
   constructor(private http: HttpClient) { }
 
+  /**
+  * Calls the login api from the server and returns the response
+  * @param username
+  * @param password
+  * @return HttpClient
+  */
   public getAccess(username, password){
     let params = new HttpParams();
     params = params.set('client_id', environment.client_id);
@@ -23,14 +28,22 @@ export class UsersService {
     params = params.set('password', password);
     params = params.set('scope', '*');
 
-    return this.http.post(`${this.apiURL}/oauth/token`, params).pipe(
+    return this.http.post(`${environment.api_url}/oauth/token`, params).pipe(
       retry(1),
       catchError(error => {
-        return [{success: false, message: error.message}];
+        return [{error: true, message: error.message}];
       })
     );
   }
 
+  /**
+  * Calls the register api from the server and returns the response
+  * @param name
+  * @param email
+  * @param password
+  * @param c_password
+  * @return HttpClient
+  */
   public registerUser(name, email, password, c_password){
     let params = new HttpParams();
     params = params.set('name', name);
@@ -38,11 +51,11 @@ export class UsersService {
     params = params.set('c_password', c_password);
     params = params.set('email', email);
 
-    return this.http.post(`${this.apiURL}/api/register`, params)
+    return this.http.post(`${environment.api_url}/api/register`, params)
       .pipe(
         retry(1),
         catchError(error => {
-          return [{success: false, message: error.message}];
+          return [{error: true, message: error.message}];
         })
       );
   }

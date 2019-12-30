@@ -20,14 +20,13 @@ export class LoginComponent implements OnInit {
    }
 
    /**
-   * // TODO: validate the response
    * Logs in the user from the admin and redirects to home
    * @param formData
    */
    onClickSubmit(formData) {
      this.SpinnerService.show();
      this.usersService.getAccess(formData.email, formData.password).subscribe((res: any)=>{
-       if (!res.success)
+       if (res.error)
        {
          alert(res.message);
        }

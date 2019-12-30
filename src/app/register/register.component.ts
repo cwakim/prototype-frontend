@@ -1,4 +1,4 @@
-// register.component.ts
+// register.component.ts used for registering users into the admin
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
 import { Router } from '@angular/router';
@@ -19,6 +19,11 @@ export class RegisterComponent implements OnInit {
    ngOnInit() {
    }
 
+   /**
+   * Submits the register form to the admin and handles the error if any.
+   * Also redirects to the home on success after creating a token in the local storage
+   * @param formData
+   */
    onClickSubmit(formData) {
      this.SpinnerService.show();
      this.usersService.registerUser(
@@ -27,7 +32,7 @@ export class RegisterComponent implements OnInit {
        formData.password,
        formData.c_password
      ).subscribe((res : any)=>{
-       if (!res.success)
+       if (res.error)
        {
          alert(res.message);
        }
