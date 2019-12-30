@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-register',
@@ -9,7 +10,11 @@ import { Router } from '@angular/router';
   styleUrls: ['../app.component.css']
 })
 export class RegisterComponent implements OnInit {
-   constructor(private usersService: UsersService, private _router: Router) { }
+   constructor(
+     private usersService: UsersService,
+     private _router: Router,
+     private SpinnerService: NgxSpinnerService
+   ) { }
 
    ngOnInit() {
    }
