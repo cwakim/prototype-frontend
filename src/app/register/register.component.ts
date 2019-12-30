@@ -20,14 +20,23 @@ export class RegisterComponent implements OnInit {
    }
 
    onClickSubmit(formData) {
+     this.SpinnerService.show();
      this.usersService.registerUser(
        formData.name,
        formData.email,
        formData.password,
        formData.c_password
      ).subscribe((res : any)=>{
-       localStorage.setItem('token', res.data.token);
-       this._router.navigate(['']);
+       if (!res.success)
+       {
+         alert(res.message);
+       }
+       else
+       {
+         localStorage.setItem('token', res.data.token);
+         this._router.navigate(['']);
+       }
+       this.SpinnerService.hide();
      });
    }
 }

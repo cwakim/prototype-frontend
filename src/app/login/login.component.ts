@@ -27,9 +27,16 @@ export class LoginComponent implements OnInit {
    onClickSubmit(formData) {
      this.SpinnerService.show();
      this.usersService.getAccess(formData.email, formData.password).subscribe((res: any)=>{
-       localStorage.setItem('token', res['access_token']);
-       this._router.navigate(['']);
-       this.SpinnerService.hide();  
+       if (!res.success)
+       {
+         alert(res.message);
+       }
+       else
+       {
+         localStorage.setItem('token', res['access_token']);
+         this._router.navigate(['']);
+       }
+       this.SpinnerService.hide();
      });
    }
 }
